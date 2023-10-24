@@ -7,7 +7,7 @@ const index = () => {
   return (
     <>
       <Head>
-        <title>Home Page</title>
+        <title>Animal Shelter - Home</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <>
