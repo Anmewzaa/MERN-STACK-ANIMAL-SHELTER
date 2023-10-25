@@ -1,13 +1,36 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { useUserAuth } from "@/contexts/UserAuthContext";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { signIn, signInWithGoogle } = useUserAuth();
+
+  const isValidEmail = (email: string) => {
+    return /\S+@\S+\.\S+/.test(email);
+  };
+  const handleSignIn = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (email.trim().length == 0) return;
+    if (!isValidEmail(email)) return;
+    if (password.trim().length == 0) return;
+    try {
+      await signIn(email, password);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <Link href={"/"} className="absolute top-8 left-8 ">
         &larr; Back
       </Link>
-      <div className="bg-white px-10 py-20 rounded-3xl sm:border-2 border-gray-200">
+      <form
+        className="bg-white px-10 py-20 rounded-3xl sm:border-2 border-gray-200"
+        onSubmit={handleSignIn}
+      >
         <h1 className="text-5xl font-semibold">Welcome back</h1>
         <p className="font-medium text-lg text-gray-500 mt-4">
           Welcome back! Please enter your details.
@@ -19,6 +42,8 @@ const Login = () => {
               type="text"
               className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
               placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mt-1">
@@ -27,13 +52,22 @@ const Login = () => {
               type="password"
               className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
               placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="mt-8 flex flex-col gap-y-4">
-            <button className="active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all py-3 rounded-xl bg-violet-500 text-white text-lg font-bold">
+            <button
+              className="active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all py-3 rounded-xl bg-violet-500 text-white text-lg font-bold"
+              type="submit"
+            >
               Sign in
             </button>
-            <button className="flex items-center justify-center gap-2 active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-3  rounded-xl text-gray-700 font-semibold text-lg border-2 border-gray-100 ">
+            <div className="divider">or</div>
+            <button
+              className="flex items-center justify-center gap-2 active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-3  rounded-xl text-gray-700 font-semibold text-lg border-2 border-gray-100 "
+              onClick={signInWithGoogle}
+            >
               <svg
                 width="24"
                 height="24"
@@ -85,7 +119,7 @@ const Login = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </form>
     </>
   );
 };

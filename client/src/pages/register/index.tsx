@@ -1,10 +1,13 @@
 import React from "react";
-
+import Head from "next/head";
 import Register from "@/components/Register";
 
 const index = () => {
   return (
     <>
+      <Head>
+        <title>Animal Shelter - Register</title>
+      </Head>
       <div className="flex w-full h-screen">
         <div className="w-full flex items-center justify-center lg:w-1/2">
           <Register />

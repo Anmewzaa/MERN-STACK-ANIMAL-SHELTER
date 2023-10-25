@@ -1,4 +1,4 @@
 export interface navType {
-  displayName: string;
+  name: string;
   href: string;
 }

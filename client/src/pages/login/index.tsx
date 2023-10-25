@@ -8,7 +8,6 @@ const index = () => {
     <>
       <Head>
         <title>Animal Shelter - Login</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className="flex w-full h-screen">
         <div className="w-full flex items-center justify-center lg:w-1/2">

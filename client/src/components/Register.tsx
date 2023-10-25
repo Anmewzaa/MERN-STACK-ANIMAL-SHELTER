@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { useUserAuth } from "@/contexts/UserAuthContext";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -7,20 +8,25 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [cfpassword, setCfPassword] = useState("");
   const [error, setError] = useState("");
+  const { signUp } = useUserAuth();
 
   const isValidEmail = (email: string) => {
     return /\S+@\S+\.\S+/.test(email);
   };
-
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSignUp = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (username.trim().length == 0) return;
     if (email.trim().length == 0) return;
     if (!isValidEmail(email)) return;
     if (password.trim().length == 0) return;
     if (cfpassword.trim().length == 0) return;
+    if (!(password === cfpassword)) return;
+    try {
+      await signUp(username, email, password);
+    } catch (err) {
+      console.log(err);
+    }
   };
-
   return (
     <>
       <Link href={"/"} className="absolute top-8 left-8 ">
@@ -28,7 +34,7 @@ const Register = () => {
       </Link>
       <form
         className="bg-white px-10 py-20 rounded-3xl sm:border-2 border-gray-200"
-        onSubmit={handleSubmit}
+        onSubmit={handleSignUp}
       >
         <h1 className="text-5xl font-semibold">Sign up</h1>
         <div className="mt-8">
