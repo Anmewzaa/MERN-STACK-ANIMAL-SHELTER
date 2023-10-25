@@ -65,7 +65,7 @@ const Navbar = () => {
                     <Link href="/">Profile</Link>
                   </li>
                   <li>
-                    <button onClick={handleSignout}>Signout</button>
+                    <button onClick={handleSignout}>Sign out</button>
                   </li>
                 </ul>
               </div>
@@ -73,7 +73,7 @@ const Navbar = () => {
           )}
           {!user && (
             <>
-              <Link href={"/login"}>Signin</Link>
+              <Link href={"/login"}>Sign in</Link>
             </>
           )}
         </div>

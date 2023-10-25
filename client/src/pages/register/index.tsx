@@ -6,7 +6,7 @@ const index = () => {
   return (
     <>
       <Head>
-        <title>Animal Shelter - Register</title>
+        <title>Animal Shelter - Sign up</title>
       </Head>
       <div className="flex w-full h-screen">
         <div className="w-full flex items-center justify-center lg:w-1/2">

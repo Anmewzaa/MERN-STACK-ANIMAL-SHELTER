@@ -7,7 +7,7 @@ const index = () => {
   return (
     <>
       <Head>
-        <title>Animal Shelter - Home</title>
+        <title>Animal Shelter</title>
       </Head>
       <>
         <Navbar />
