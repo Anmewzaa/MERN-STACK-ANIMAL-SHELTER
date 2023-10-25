@@ -41,7 +41,7 @@ const Navbar = () => {
     <>
       <div className="mx-auto max-w-[960px] h-[60px]">
         <div className="flex justify-between items-center h-[60px]">
-          <h2>Help me!</h2>
+          <h2>Animal Shelter</h2>
           <ul className="flex">
             {navItem.map((item, idx) => (
               <div key={idx} className="mr-8">
