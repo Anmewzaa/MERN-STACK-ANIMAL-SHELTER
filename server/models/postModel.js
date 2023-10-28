@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const postSchema = mongoose.Schema({
   postId: {
-    type: Number,
+    type: String,
     require: true,
     unique: true,
   },
@@ -16,6 +16,10 @@ const postSchema = mongoose.Schema({
   },
   postImage: {
     type: String,
+    require: true,
+  },
+  postComment: {
+    type: [],
     require: true,
   },
   authorUid: {
