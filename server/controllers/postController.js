@@ -1,10 +1,6 @@
 const { v4: uuidv4 } = require("uuid");
 const Post = require("../models/postModel");
 
-exports.test = (req, res) => {
-  res.json({ message: "Hello check" });
-};
-
 exports.create = async (req, res) => {
   try {
     const {
@@ -40,10 +36,10 @@ exports.create = async (req, res) => {
       authorName: authorName,
       authorEmail: authorEmail,
       authorProfile: authorProfile,
-    }).then((data) => {
+    }).then(() => {
       res
         .json({
-          response: data,
+          response: "Created successfully",
           error: [],
         })
         .catch((err) =>
@@ -53,6 +49,27 @@ exports.create = async (req, res) => {
           })
         );
     });
+  } catch (err) {
+    res.json({
+      response: [],
+      error: err,
+    });
+  }
+};
+
+exports.remove = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Post.findOneAndRemove({ postId: id })
+      .then(() => {
+        res.json({ response: "Delete successfully", error: [] });
+      })
+      .catch((err) =>
+        res.json({
+          response: [],
+          error: err,
+        })
+      );
   } catch (err) {
     res.json({
       response: [],
