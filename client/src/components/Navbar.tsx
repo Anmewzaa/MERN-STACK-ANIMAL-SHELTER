@@ -1,5 +1,5 @@
 import React from "react";
-import { navType } from "@/types/navType";
+import { navType } from "@/types/globalType";
 import Link from "next/link";
 import { useUserAuth } from "@/contexts/UserAuthContext";
 import { useRouter } from "next/router";
@@ -14,10 +14,10 @@ const navItem: navType[] = [
     name: "Adopt",
     href: "/adopt",
   },
-  {
-    name: "Board",
-    href: "/board",
-  },
+  // {
+  //   name: "Board",
+  //   href: "/board",
+  // },
   {
     name: "About us",
     href: "/aboutus",

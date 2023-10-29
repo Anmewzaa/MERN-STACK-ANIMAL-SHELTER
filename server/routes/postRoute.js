@@ -11,7 +11,7 @@ const {
 const { upload } = require("../middlewares/multer");
 
 router.get("/get", getAll);
-router.get("/get/:id", getOne);
+router.get("/getone/:id", getOne);
 router.post("/create", upload, create);
 router.put("/update/:id", updatePost);
 router.delete("/remove/:id", remove);

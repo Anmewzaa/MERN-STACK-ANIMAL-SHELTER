@@ -6,7 +6,7 @@ const fs = require("fs");
 exports.getAll = async (req, res) => {
   try {
     await Post.find({}).then((data) => {
-      res.json({
+      res.status(200).json({
         response: data,
         error: [],
       });
