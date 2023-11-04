@@ -77,7 +77,7 @@ const AdoptPage = () => {
                 </>
               )}
             </div>
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 gap-4">
               {searchFilter.map((item) => (
                 <div key={item?.postId}>
                   <Card {...item} />
