@@ -11,6 +11,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AdoptPage from "./pages/AdoptPage";
 import Adoptinfo from "./pages/AdoptInfo";
+import AddPostPage from "./pages/AddPostPage";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/adopt/:id",
     element: <Adoptinfo />,
+  },
+  {
+    path: "/addpost",
+    element: <AddPostPage />,
   },
 ]);
 
