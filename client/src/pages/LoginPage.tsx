@@ -1,7 +1,14 @@
+import { auth } from "../firebase/firebase-config";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 // Components
 import Login from "../components/Login";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!auth.currentUser) return navigate("/");
+  }, []);
   return (
     <>
       <div className="flex w-full h-screen">
