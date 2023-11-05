@@ -50,7 +50,6 @@ exports.create = async (req, res) => {
       !(
         postTitle &&
         postDesciption &&
-        req.file &&
         authorUid &&
         authorName &&
         authorEmail &&
@@ -59,6 +58,7 @@ exports.create = async (req, res) => {
     ) {
       return res.send("Input required");
     }
+    if (!req.file) return res.send("file required");
     postId = uuidv4();
     postImage = req.file.filename;
     await Post.create({
