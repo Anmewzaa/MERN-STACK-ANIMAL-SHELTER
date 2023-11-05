@@ -26,7 +26,7 @@ const AddPostPage = () => {
     const form = new FormData();
     form.append("postTitle", title);
     form.append("postDesciption", description);
-    form.append("postImage", images[0]);
+    form.append("postImage", images);
     form.append("authorUid", auth.currentUser?.uid);
     form.append("authorName", auth.currentUser?.displayName);
     form.append("authorEmail", auth.currentUser?.email);
