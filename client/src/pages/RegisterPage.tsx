@@ -1,4 +1,4 @@
-import { auth } from "../firebase/firebase-config";
+import { useUserAuth } from "../contexts/UserAuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // Components
@@ -6,9 +6,10 @@ import Register from "../components/Register";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
+  const { user } = useUserAuth();
   useEffect(() => {
-    if (!auth.currentUser) return navigate("/");
-  }, []);
+    if (user) return navigate("/");
+  }, [navigate, user]);
   return (
     <>
       <div className="flex w-full h-screen">
