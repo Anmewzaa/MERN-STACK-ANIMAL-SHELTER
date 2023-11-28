@@ -4,9 +4,12 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 // Components
 import Navbar from "../components/Navbar";
+import Comment from "../components/Comment";
 import { postType } from "../types/globalType";
+import { useUserAuth } from "../contexts/UserAuthContext";
 
 const Adoptinfo = () => {
+  const { user } = useUserAuth();
   const [post, setPost] = useState<postType>();
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
@@ -33,6 +36,11 @@ const Adoptinfo = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const deletePost = async () => {
+    await axios
+      .delete(`${API_URL}/remove/${id}/`)
+      .then(() => window.location.replace("/adopt"));
+  };
 
   return (
     <>
@@ -47,6 +55,12 @@ const Adoptinfo = () => {
         <>
           <div className="mx-auto max-w-[960px]">
             <div className="my-4">
+              <div className="flex justify-center items-center">
+                <img
+                  src={`${IMAGE_URL}/${post?.postImage}`}
+                  className="max-h-[500px] rounded-md mb-6"
+                />
+              </div>
               <h1 className="text-4xl font-semibold mb-4">{post?.postTitle}</h1>
               <div className="avatar mb-6">
                 <div className="w-6 rounded-full mr-2">
@@ -54,15 +68,24 @@ const Adoptinfo = () => {
                 </div>
                 <p className="text-gray-500">{post?.authorName}</p>
               </div>
-              <div className="flex justify-center items-center">
-                <img
-                  src={`${IMAGE_URL}/${post?.postImage}`}
-                  className="max-h-[500px] rounded-md mb-6"
-                />
-              </div>
-              <p>{post?.postDesciption}</p>
+              <div
+                dangerouslySetInnerHTML={{ __html: post?.postDesciption }}
+                className="mb-2"
+              />
             </div>
-            <div className="bg-gray-50 rounded-md p-4">comment</div>
+            <div className="bg-gray-50 rounded-md p-4 my-4">
+              <Comment />
+            </div>
+            {user.uid === post?.authorUid && (
+              <>
+                <div className="flex justify-end my-4">
+                  <button className="btn btn-warning mr-2">Edit post</button>
+                  <button className="btn btn-error" onClick={deletePost}>
+                    Delete post
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </>
       )}

@@ -1,5 +1,6 @@
 import { postType } from "../types/globalType";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import ReactQuill from "react-quill";
 
 const Card = ({
   postId,
@@ -30,7 +31,10 @@ const Card = ({
         </figure>
         <div className="card-body">
           <h2 className="card-title mb-2 text-2xl">{postTitle}</h2>
-          <p className="mb-2 text-sm">{postDesciption}</p>
+          <div
+            dangerouslySetInnerHTML={{ __html: postDesciption }}
+            className="mb-2"
+          />
           <div className="avatar">
             <div className="w-6 rounded-full mr-2">
               <img src={authorProfile} />

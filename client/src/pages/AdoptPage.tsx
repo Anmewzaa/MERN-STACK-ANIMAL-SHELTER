@@ -77,13 +77,21 @@ const AdoptPage = () => {
                 </>
               )}
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {searchFilter.map((item) => (
-                <div key={item?.postId}>
-                  <Card {...item} />
+            {searchFilter.length === 0 ? (
+              <>
+                <div className="flex justify-center mt-8">Empty post...</div>
+              </>
+            ) : (
+              <>
+                <div className="grid grid-cols-2 gap-4">
+                  {searchFilter.map((item) => (
+                    <div key={item?.postId}>
+                      <Card {...item} />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </>
+            )}
           </div>
         </>
       )}
