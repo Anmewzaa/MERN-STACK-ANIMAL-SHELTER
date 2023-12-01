@@ -1,6 +1,5 @@
 import { postType } from "../types/globalType";
 import { useNavigate } from "react-router-dom";
-import ReactQuill from "react-quill";
 
 const Card = ({
   postId,

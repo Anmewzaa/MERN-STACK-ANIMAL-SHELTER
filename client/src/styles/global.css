@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hero-container {
+  background-image: linear-gradient(
+      to bottom,
+      rgb(173, 181, 189, 0.7),
+      rgb(234, 237, 240, 0.7)
+    ),
+    url("https://images.unsplash.com/photo-1581579186913-45ac3e6efe93?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
+}
+.footprint-bg {
+  background-image: linear-gradient(
+      to bottom,
+      rgb(255, 255, 255, 0.75),
+      rgb(255, 255, 255, 0.75)
+    ),
+    url("https://webkit.moxcreative.com/meowville/wp-content/uploads/sites/18/2023/06/bg_img.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 75vh;
+}

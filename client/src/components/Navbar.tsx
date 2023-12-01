@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-[960px] h-[60px]">
+      <div className="mx-auto max-w-[1200px] h-[60px]">
         <div className="flex justify-between items-center h-[60px]">
           <h2>Animal Shelter</h2>
           <ul className="flex">
