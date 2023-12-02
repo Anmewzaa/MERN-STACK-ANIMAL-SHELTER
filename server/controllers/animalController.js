@@ -1,11 +1,11 @@
 const { v4: uuidv4 } = require("uuid");
-const Post = require("../models/postModel");
+const Animal = require("../models/animalModel");
 const fs = require("fs");
 
 // Read
 exports.getAll = async (req, res) => {
   try {
-    await Post.find({}).then((data) => {
+    await Animal.find({}).then((data) => {
       res.status(200).json({
         response: data,
         error: [],
@@ -22,7 +22,7 @@ exports.getAll = async (req, res) => {
 exports.getOne = async (req, res) => {
   try {
     const { id } = req.params;
-    await Post.findOne({ postId: id }).then((data) => {
+    await Animal.findOne({ postId: id }).then((data) => {
       res.json({
         response: data,
         error: [],
@@ -39,38 +39,46 @@ exports.getOne = async (req, res) => {
 exports.create = async (req, res) => {
   try {
     const {
-      postTitle,
-      postDesciption,
+      animalName,
+      animalSpecies,
+      animalHabit,
+      animalDesciption,
       authorUid,
       authorName,
       authorEmail,
       authorProfile,
+      date,
     } = req.body;
     if (
       !(
-        postTitle &&
-        postDesciption &&
+        animalName &&
+        animalSpecies &&
+        animalHabit &&
+        animalDesciption &&
         authorUid &&
         authorName &&
         authorEmail &&
-        authorProfile
+        authorProfile &&
+        date
       )
     ) {
       return res.send("Input required");
     }
     if (!req.file) return res.send("file required");
-    postId = uuidv4();
-    postImage = req.file.filename;
-    await Post.create({
-      postId: postId,
-      postTitle: postTitle,
-      postDesciption: postDesciption,
-      postImage: postImage,
-      postComment: [],
+    animalImage = req.file.filename;
+    await Animal.create({
+      animalId: uuidv4(),
+      animalName: animalName,
+      animalSpecies: animalSpecies,
+      animalHabit: animalHabit,
+      animalDesciption: animalDesciption,
+      animalImage: animalImage,
+      comment: [],
       authorUid: authorUid,
       authorName: authorName,
       authorEmail: authorEmail,
       authorProfile: authorProfile,
+      date: date,
     }).then(() => {
       res.json({
         response: "Created successfully",
@@ -88,11 +96,18 @@ exports.create = async (req, res) => {
 exports.updatePost = async (req, res) => {
   try {
     const { id } = req.params;
-    const { postTitle, postDesciption } = req.params;
-    if (!(postTitle && postDesciption)) return res.send("Input required");
-    await Post.findOneAndUpdate(
-      { postId: id },
-      { postTitle: postTitle, postDesciption: postDesciption }
+    const { animalName, animalSpecies, animalHabit, animalDesciption } =
+      req.params;
+    if (!(animalName && animalSpecies && animalHabit && animalDesciption))
+      return res.send("Input required");
+    await Animal.findOneAndUpdate(
+      { animalId: id },
+      {
+        animalName: animalName,
+        animalSpecies: animalSpecies,
+        animalHabit: animalHabit,
+        animalDesciption: animalDesciption,
+      }
     ).then(() => {
       res.json({
         response: "Update post successfully",
@@ -110,8 +125,8 @@ exports.updatePost = async (req, res) => {
 exports.remove = async (req, res) => {
   try {
     const { id } = req.params;
-    const removed = await Post.findOneAndDelete({ postId: id });
-    await fs.unlink("./images/" + removed.postImage, (err) => {
+    const removed = await Animal.findOneAndDelete({ animalId: id });
+    await fs.unlink("./images/" + removed.animalImage, (err) => {
       if (err) {
         console.log(err);
       } else {
@@ -131,7 +146,7 @@ exports.comment = async (req, res) => {
   try {
     const { id } = req.params;
     const { comment } = req.body;
-    await Post.findOneAndUpdate({ postId: id }, { postComment: comment }).then(
+    await Animal.findOneAndUpdate({ animalId: id }, { comment: comment }).then(
       () => {
         res.json({
           response: "Update comment successfully",

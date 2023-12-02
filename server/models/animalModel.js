@@ -1,24 +1,32 @@
 const mongoose = require("mongoose");
 
-const postSchema = mongoose.Schema({
-  postId: {
+const animalSchema = mongoose.Schema({
+  animalId: {
     type: String,
     require: true,
     unique: true,
   },
-  postTitle: {
+  animalName: {
     type: String,
     require: true,
   },
-  postDesciption: {
+  animalSpecies: {
     type: String,
     require: true,
   },
-  postImage: {
+  animalHabit: {
     type: String,
     require: true,
   },
-  postComment: {
+  animalDesciption: {
+    type: String,
+    require: true,
+  },
+  animalImage: {
+    type: String,
+    require: true,
+  },
+  comment: {
     type: [],
     require: true,
   },
@@ -38,6 +46,10 @@ const postSchema = mongoose.Schema({
     type: String,
     require: true,
   },
+  date: {
+    type: Date,
+    require: true,
+  },
 });
 
-module.exports = mongoose.model("Post", postSchema);
+module.exports = mongoose.model("Animal", animalSchema);

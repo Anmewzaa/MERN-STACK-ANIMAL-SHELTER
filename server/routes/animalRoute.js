@@ -7,7 +7,7 @@ const {
   remove,
   updatePost,
   comment,
-} = require("../controllers/postController");
+} = require("../controllers/animalController");
 const { upload } = require("../middlewares/multer");
 
 router.get("/get", getAll);
