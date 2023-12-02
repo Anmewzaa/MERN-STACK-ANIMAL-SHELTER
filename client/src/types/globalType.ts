@@ -5,14 +5,24 @@ export interface navType {
 
 export interface postType {
   _id: string;
-  postId: string;
-  postTitle: string;
-  postDesciption: string;
-  postImage: string;
-  postComment: [];
+  animalId: string;
+  animalName: string;
+  animalSpecies: string;
+  animalHabit: string;
+  animalDesciption: string;
+  animalImage: string;
+  comment: [];
   authorUid: string;
   authorName: string;
   authorEmail: string;
   authorProfile: string;
+  date: Date;
   __V: number;
+}
+
+export interface stepType {
+  number: number;
+  picture: string;
+  title: string;
+  description: string;
 }

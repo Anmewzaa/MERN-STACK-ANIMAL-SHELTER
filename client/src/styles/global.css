@@ -12,17 +12,29 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 800px;
+  height: 700px;
 }
 .footprint-bg {
   background-image: linear-gradient(
       to bottom,
-      rgb(255, 255, 255, 0.75),
-      rgb(255, 255, 255, 0.75)
+      rgb(255, 255, 255, 0.8),
+      rgb(255, 255, 255, 0.8)
     ),
     url("https://webkit.moxcreative.com/meowville/wp-content/uploads/sites/18/2023/06/bg_img.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 75vh;
+  height: 650px;
+}
+@media screen and (max-width: 640px) {
+  .hero-container {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .footprint-bg {
+    /* background: red; */
+    background-image: none;
+  }
 }

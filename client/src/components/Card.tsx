@@ -2,15 +2,18 @@ import { postType } from "../types/globalType";
 import { useNavigate } from "react-router-dom";
 
 const Card = ({
-  postId,
-  postTitle,
-  postDesciption,
-  postImage,
-  postComment,
+  animalId,
+  animalName,
+  animalSpecies,
+  animalHabit,
+  animalDesciption,
+  animalImage,
+  comment,
   authorUid,
   authorName,
   authorEmail,
   authorProfile,
+  date,
 }: postType) => {
   const IMAGE_URL = import.meta.env.VITE_IMAGE_URL;
   const navigate = useNavigate();
@@ -18,20 +21,20 @@ const Card = ({
   return (
     <div
       className="cursor-pointer"
-      onClick={() => navigate(`/adopt/${postId}`)}
+      onClick={() => navigate(`/adopt/${animalId}`)}
     >
       <div className="card bg-base-100 shadow-xl">
         <figure>
           <img
-            src={`${IMAGE_URL}/${postImage}`}
-            alt={postTitle}
+            src={`${IMAGE_URL}/${animalImage}`}
+            alt={animalName}
             className="max-h-[250px]"
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title mb-2 text-2xl">{postTitle}</h2>
+          <h2 className="card-title mb-2 text-2xl">{animalName}</h2>
           <div
-            dangerouslySetInnerHTML={{ __html: postDesciption }}
+            dangerouslySetInnerHTML={{ __html: animalDesciption }}
             className="mb-2"
           />
           <div className="avatar">

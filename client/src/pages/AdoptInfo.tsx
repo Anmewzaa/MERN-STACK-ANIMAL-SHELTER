@@ -57,11 +57,13 @@ const Adoptinfo = () => {
             <div className="my-4">
               <div className="flex justify-center items-center">
                 <img
-                  src={`${IMAGE_URL}/${post?.postImage}`}
+                  src={`${IMAGE_URL}/${post?.animalImage}`}
                   className="max-h-[500px] rounded-md mb-6"
                 />
               </div>
-              <h1 className="text-4xl font-semibold mb-4">{post?.postTitle}</h1>
+              <h1 className="text-4xl font-semibold mb-4">
+                {post?.animalName}
+              </h1>
               <div className="avatar mb-6">
                 <div className="w-6 rounded-full mr-2">
                   <img src={post?.authorProfile} />
@@ -69,7 +71,7 @@ const Adoptinfo = () => {
                 <p className="text-gray-500">{post?.authorName}</p>
               </div>
               <div
-                dangerouslySetInnerHTML={{ __html: post?.postDesciption }}
+                dangerouslySetInnerHTML={{ __html: post?.animalDesciption }}
                 className="mb-2"
               />
             </div>

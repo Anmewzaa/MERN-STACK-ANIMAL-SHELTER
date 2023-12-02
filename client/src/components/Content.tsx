@@ -4,7 +4,7 @@ const Content = () => {
   return (
     <div className="footprint-bg">
       <div className="mx-auto max-w-[1200px]">
-        <div className="h-[80vh] flex flex-col justify-around">
+        <div className="h-[650px] flex flex-col justify-around">
           <div className="grid grid-cols-2 gap-8">
             <section>
               <h4 className="uppercase font-bold text-[#FF7F50] mb-4">

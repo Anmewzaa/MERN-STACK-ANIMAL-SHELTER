@@ -40,7 +40,7 @@ const AdoptPage = () => {
       return post;
     }
     return (
-      post.postTitle.toLowerCase().includes(search.toLowerCase()) ||
+      post.animalId.toLowerCase().includes(search.toLowerCase()) ||
       post.authorName.toLowerCase().includes(search.toLowerCase()) ||
       post.authorEmail.toLowerCase().includes(search.toLowerCase())
     );
