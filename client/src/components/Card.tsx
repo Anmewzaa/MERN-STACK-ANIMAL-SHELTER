@@ -24,25 +24,22 @@ const Card = ({
       onClick={() => navigate(`/adopt/${animalId}`)}
     >
       <div className="card bg-base-100 shadow-xl">
-        <figure>
+        <figure className="relative">
           <img
             src={`${IMAGE_URL}/${animalImage}`}
             alt={animalName}
-            className="max-h-[250px]"
+            className="hover:scale-105 ease-in duration-200"
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title mb-2 text-2xl">{animalName}</h2>
+          <h4 className="font-bold mb-2 text-2xl">
+            Bruno <span className="text-sm font-normal">({animalSpecies})</span>
+          </h4>
+          <p className="mb-2">{animalHabit}</p>
           <div
             dangerouslySetInnerHTML={{ __html: animalDesciption }}
             className="mb-2"
           />
-          <div className="avatar">
-            <div className="w-6 rounded-full mr-2">
-              <img src={authorProfile} />
-            </div>
-            <p className="text-gray-500">{authorName}</p>
-          </div>
         </div>
       </div>
     </div>

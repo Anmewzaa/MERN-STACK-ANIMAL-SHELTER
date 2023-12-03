@@ -26,6 +26,23 @@
   background-size: cover;
   height: 650px;
 }
+
+.cat-bg {
+  background-image: linear-gradient(
+      to bottom,
+      rgb(255, 255, 255, 0.8),
+      rgb(255, 255, 255, 0.8)
+    ),
+    url("https://images.unsplash.com/photo-1511044568932-338cba0ad803?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.background-drop {
+  background-color: red;
+}
+
 @media screen and (max-width: 640px) {
   .hero-container {
     height: 500px;

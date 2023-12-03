@@ -22,7 +22,7 @@ exports.getAll = async (req, res) => {
 exports.getOne = async (req, res) => {
   try {
     const { id } = req.params;
-    await Animal.findOne({ postId: id }).then((data) => {
+    await Animal.findOne({ animalId: id }).then((data) => {
       res.json({
         response: data,
         error: [],
