@@ -1,54 +1,68 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase/firebase-config";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { auth } from "../firebase/firebase-config";
+import { useNavigate } from "react-router-dom";
+// Component
+import Navbar from "../components/Navbar";
 // React quill
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-// Components
-import Navbar from "../components/Navbar";
 
-const AddPostPage = () => {
-  const API_URL = import.meta.env.VITE_API_URL;
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (!auth.currentUser) return navigate("/");
-  }, []);
-  const [images, setImages] = useState([]);
+const Editpost = () => {
   const [name, setName] = useState("");
   const [species, setSpecies] = useState("");
   const [habit, setHabit] = useState("");
   const [description, setDescription] = useState("");
-  const onImageChange = (e) => {
-    setImages(e.target.files[0]);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const form = new FormData();
-    form.append("animalName", name);
-    form.append("animalSpecies", species);
-    form.append("animalHabit", habit);
-    form.append("animalDesciption", description);
-    form.append("animalImage", images);
-    form.append("authorUid", auth.currentUser?.uid);
-    form.append("authorName", auth.currentUser?.displayName);
-    form.append("authorEmail", auth.currentUser?.email);
-    form.append("authorProfile", auth.currentUser?.photoURL);
-    form.append("date", new Date());
-
+  const [image, setImage] = useState("");
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!auth.currentUser) return navigate("/");
+  }, []);
+  const API_URL = import.meta.env.VITE_API_URL;
+  const IMAGE_URL = import.meta.env.VITE_IMAGE_URL;
+  const { id } = useParams();
+  const fetchAPI = () => {
     axios
-      .post(`${API_URL}/create`, form)
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+      .get(`${API_URL}/get/${id}`)
+      .then((response) => {
+        setName(response.data.response.animalName);
+        setSpecies(response.data.response.animalSpecies);
+        setHabit(response.data.response.animalHabit);
+        setDescription(response.data.response.animalDesciption);
+        setImage(response.data.response.animalImage);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-
+  useEffect(() => {
+    fetchAPI();
+  }, []);
+  const updatePost = () => {
+    axios
+      .put(`${API_URL}/update/${id}`, {
+        animalName: name,
+        animalSpecies: species,
+        animalHabit: habit,
+        animalDesciption: description,
+      })
+      .then(() => alert("pass"))
+      .catch((err) => alert(err.error));
+  };
   return (
     <>
       <Navbar />
       <div className="mx-auto max-w-[1200px]">
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
-          <h1 className="mb-4 text-3xl font-semibold">Add New Post</h1>
+        <form onSubmit={updatePost}>
+          <div className="flex justify-center">
+            <img
+              src={`${IMAGE_URL}/${image}`}
+              alt=""
+              className="max-h-[500px] rounded-md mb-6"
+            />
+          </div>
+          <h1 className="mb-4 text-3xl font-semibold">Update Post</h1>
           <div className="mb-4">
             <label className="label">
               <span className="label-text">Name</span>
@@ -59,7 +73,9 @@ const AddPostPage = () => {
                 placeholder="Enter animal name here"
                 className="input input-bordered w-[screen-4]"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
                 required
               />
             </div>
@@ -74,7 +90,9 @@ const AddPostPage = () => {
                 placeholder="Enter animal species here"
                 className="input input-bordered w-[screen-4]"
                 value={species}
-                onChange={(e) => setSpecies(e.target.value)}
+                onChange={(e) => {
+                  setSpecies(e.target.value);
+                }}
                 required
               />
             </div>
@@ -94,7 +112,7 @@ const AddPostPage = () => {
               />
             </div>
           </div>
-          <div className="mb-4">
+          <div className="mb-8">
             <label className="label">
               <span className="label-text">Description</span>
             </label>
@@ -105,20 +123,8 @@ const AddPostPage = () => {
               className="my-2"
             />
           </div>
-          <div className="mb-8">
-            <label className="label">
-              <span className="label-text">Image</span>
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              className="block my-2 file-input file-input-bordered w-full"
-              onChange={onImageChange}
-              required
-            />
-          </div>
-          <button className="btn btn-neutral w-full" type="submit">
-            Add Post
+          <button className="btn btn-neutral w-full mb-8" type="submit">
+            Update Post
           </button>
         </form>
       </div>
@@ -126,4 +132,4 @@ const AddPostPage = () => {
   );
 };
 
-export default AddPostPage;
+export default Editpost;

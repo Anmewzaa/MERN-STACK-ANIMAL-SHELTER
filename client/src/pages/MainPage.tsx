@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import Content from "../components/Content";
 import AdoptShow from "../components/AdoptShow";
 import HowWeWork from "../components/HowWeWork";
+import Footer from "../components/Footer";
 
 const MainPage = () => {
   return (
@@ -13,6 +14,7 @@ const MainPage = () => {
       <Content />
       <AdoptShow />
       <HowWeWork />
+      <Footer />
     </>
   );
 };

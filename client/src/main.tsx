@@ -12,6 +12,7 @@ import RegisterPage from "./pages/RegisterPage";
 import AdoptPage from "./pages/AdoptPage";
 import Adoptinfo from "./pages/AdoptInfo";
 import AddPostPage from "./pages/AddPostPage";
+import Editpost from "./pages/Editpost";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/addpost",
     element: <AddPostPage />,
+  },
+  {
+    path: "/editpost/:id",
+    element: <Editpost />,
   },
 ]);
 

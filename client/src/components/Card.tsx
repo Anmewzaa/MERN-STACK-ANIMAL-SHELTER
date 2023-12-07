@@ -28,12 +28,13 @@ const Card = ({
           <img
             src={`${IMAGE_URL}/${animalImage}`}
             alt={animalName}
-            className="hover:scale-105 ease-in duration-200"
+            className="hover:scale-110 ease-in duration-200"
           />
         </figure>
         <div className="card-body">
           <h4 className="font-bold mb-2 text-2xl">
-            Bruno <span className="text-sm font-normal">({animalSpecies})</span>
+            {animalName}{" "}
+            <span className="text-sm font-normal">({animalSpecies})</span>
           </h4>
           <p className="mb-2">{animalHabit}</p>
           <div

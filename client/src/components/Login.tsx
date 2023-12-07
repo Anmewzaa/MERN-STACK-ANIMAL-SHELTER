@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUserAuth } from "../contexts/UserAuthContext";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,9 +14,24 @@ const Login = () => {
   };
   const handleSignIn = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (email.trim().length == 0) return;
-    if (!isValidEmail(email)) return;
-    if (password.trim().length == 0) return;
+    if (email.trim().length == 0)
+      return Swal.fire({
+        icon: "error",
+        title: "Please enter your email address",
+        text: "กรุณากรอกอีเมลของคุณ",
+      });
+    if (!isValidEmail(email))
+      return Swal.fire({
+        icon: "error",
+        title: "Please enter correct email address",
+        text: "กรุณากรอกอีเมลของคุณให้ถูกต้อง",
+      });
+    if (password.trim().length == 0)
+      return Swal.fire({
+        icon: "error",
+        title: "Please enter your password",
+        text: "กรุณากรอกรหัสผ่านของคุณ",
+      });
     try {
       await signIn(email, password);
     } catch (err) {
@@ -27,10 +44,7 @@ const Login = () => {
       <Link to={"/"} className="absolute top-8 left-8 ">
         &larr; Back
       </Link>
-      <form
-        className="bg-white px-10 py-20 rounded-3xl sm:border-2 border-gray-200"
-        onSubmit={handleSignIn}
-      >
+      <div className="bg-white px-10 py-20 rounded-3xl sm:border-2 border-gray-200">
         <h1 className="text-5xl font-semibold">Welcome back</h1>
         <p className="font-medium text-lg text-gray-500 mt-4">
           Welcome back! Please enter your details.
@@ -59,7 +73,7 @@ const Login = () => {
           <div className="mt-8 flex flex-col gap-y-4">
             <button
               className="active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all py-3 rounded-xl bg-violet-500 text-white text-lg font-bold"
-              type="submit"
+              onClick={handleSignIn}
             >
               Sign in
             </button>
@@ -119,7 +133,7 @@ const Login = () => {
             </Link>
           </div>
         </div>
-      </form>
+      </div>
     </>
   );
 };

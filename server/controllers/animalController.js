@@ -97,7 +97,8 @@ exports.updatePost = async (req, res) => {
   try {
     const { id } = req.params;
     const { animalName, animalSpecies, animalHabit, animalDesciption } =
-      req.params;
+      req.body;
+    if (!animalName) return res.send(animalName);
     if (!(animalName && animalSpecies && animalHabit && animalDesciption))
       return res.send("Input required");
     await Animal.findOneAndUpdate(

@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 import Comment from "../components/Comment";
 import { postType } from "../types/globalType";
 import { useUserAuth } from "../contexts/UserAuthContext";
+import { Link } from "react-router-dom";
 
 const Adoptinfo = () => {
   const { user } = useUserAuth();
@@ -15,7 +16,7 @@ const Adoptinfo = () => {
   const { id } = useParams();
   const API_URL = import.meta.env.VITE_API_URL;
   const IMAGE_URL = import.meta.env.VITE_IMAGE_URL;
-  const [comment, setComment] = useState([]);
+  const [comment, setComment] = useState("");
 
   const fetchAPI = async () => {
     if (id) {
@@ -24,8 +25,8 @@ const Adoptinfo = () => {
         .get(`${API_URL}/get/${id}/`)
         .then((response) => {
           setPost(response.data.response);
-          setLoading(false);
           setComment(response.data.response.comment);
+          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
@@ -45,7 +46,7 @@ const Adoptinfo = () => {
   };
 
   return (
-    <>
+    <div className="mb-8">
       <Navbar />
       {loading ? (
         <>
@@ -55,7 +56,7 @@ const Adoptinfo = () => {
         </>
       ) : (
         <>
-          <div className="mx-auto max-w-[960px]">
+          <div className="mx-auto max-w-[1200px] shadow-md p-8 rounded-xl">
             <div className="my-4">
               <div className="flex justify-center items-center">
                 <img
@@ -76,33 +77,42 @@ const Adoptinfo = () => {
               />
             </div>
             <div className="avatar">
-              <h2 className="mr-2">Author post : </h2>
-              {/* <div className="w-6 rounded-full mr-2">
-                <img src={post?.authorProfile} />
-              </div> */}
-              <p className="text-gray-500">{post?.authorName}</p>
+              <h2 className="mr-2">Author :</h2>
+              <div className="w-6 rounded-full mr-2">
+                <img src={post?.authorProfile} className="shadow-md" />
+              </div>
+              <p className="text-gray-800 mr-2">{post?.authorName}</p>
+              <p className="text-gray-500">{`(${post?.authorEmail})`}</p>
             </div>
             <div className="bg-gray-50 rounded-md p-4 my-4">
               <div>
                 <h2 className="font-bold text-xl mb-4">Comment</h2>
               </div>
-              {JSON.stringify(comment)}
-              <Comment />
+              <Comment comment={comment} />
             </div>
-            {user.uid === post?.authorUid && (
+            {user && (
               <>
-                <div className="flex justify-end my-4">
-                  <button className="btn btn-warning mr-2">Edit post</button>
-                  <button className="btn btn-error" onClick={deletePost}>
-                    Delete post
-                  </button>
-                </div>
+                {user.uid === post?.authorUid && (
+                  <>
+                    <div className="flex justify-end">
+                      <Link
+                        className="btn btn-warning mr-2"
+                        to={`/editpost/${id}`}
+                      >
+                        Edit post
+                      </Link>
+                      <button className="btn btn-error" onClick={deletePost}>
+                        Delete post
+                      </button>
+                    </div>
+                  </>
+                )}
               </>
             )}
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,6 +1,8 @@
-import { navType } from "../types/globalType";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../contexts/UserAuthContext";
+import { useState } from "react";
+import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { navType } from "../types/globalType";
 
 const navItem: navType[] = [
   {
@@ -11,17 +13,14 @@ const navItem: navType[] = [
     name: "Adopt",
     href: "/adopt",
   },
-  // {
-  //   name: "Board",
-  //   href: "/board",
-  // },
   {
-    name: "About us",
-    href: "/aboutus",
+    name: "About",
+    href: "/about",
   },
 ];
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const { user, logOut } = useUserAuth();
 
@@ -36,43 +35,39 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-[1200px] h-[60px]">
-        <div className="flex justify-between items-center h-[60px]">
-          <h2>Animal Shelter</h2>
-          <ul className="flex">
-            {navItem.map((item, idx) => (
-              <div key={idx} className="mr-8">
-                <li>
-                  <Link to={item?.href}>{item?.name}</Link>
-                </li>
-              </div>
-            ))}
-          </ul>
-          {user && (
-            <>
-              <div className="dropdown dropdown-end">
-                <label tabIndex={0} className="btn m-1">
-                  {user.displayName}
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+      <div className="shadow-md w-full">
+        <div className="md:flex items-center justify-between bg-white py-4 md:py-2 md:px-12 px-7 relative">
+          <div className="font-bold text-3xl cursor-pointer flex items-center gap-1">
+            <span className="font-amctic">Animal Shelter</span>
+          </div>
+          <div
+            onClick={() => setOpen(!open)}
+            className="absolute right-8 top-6 cursor-pointer md:hidden w-7 h-7"
+          >
+            {open ? <XMarkIcon /> : <Bars3BottomRightIcon />}
+          </div>
+          <ul
+            className={`absolute md:flex md:items-center md:pb-0 md:static md:z-auto bg-white pb-8 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+              open ? "left-0" : "left-[-1000px]"
+            }`}
+          >
+            {navItem.map((link) => (
+              <li className="md:ml-8 md:my-0 my-7 font-semibold">
+                <Link
+                  to={link.href}
+                  className="text-gray-800 hover:text-blue-400 duration-500"
                 >
-                  <li>
-                    <Link to="/">Profile</Link>
-                  </li>
-                  <li>
-                    <button onClick={handleSignout}>Sign out</button>
-                  </li>
-                </ul>
-              </div>
-            </>
-          )}
-          {!user && (
-            <>
-              <Link to={"/login"}>Sign in</Link>
-            </>
-          )}
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+            <Link
+              to={"/login"}
+              className="btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static"
+            >
+              Login
+            </Link>
+          </ul>
         </div>
       </div>
     </>

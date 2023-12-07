@@ -9,15 +9,28 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase-config";
+import Swal from "sweetalert2";
 
 const userAuthContext = createContext([[], () => null]);
 
 export const UserAuthContextProvider = ({ children }) => {
   const [user, setUser] = useState<any | null>({});
   const signIn = (email: string, password: string) => {
-    return signInWithEmailAndPassword(auth, email, password).then(() =>
-      window.location.replace("/")
-    );
+    return signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        Swal.fire({
+          title: "Good job!",
+          text: "Login success!",
+          icon: "success",
+        }).then(() => window.location.replace("/"));
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Email or password is incorrect",
+          text: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+        });
+      });
   };
   const signUp = (username: string, email: string, password: string) => {
     return createUserWithEmailAndPassword(auth, email, password)
@@ -25,15 +38,27 @@ export const UserAuthContextProvider = ({ children }) => {
         updateProfile(user.user, {
           displayName: username,
           photoURL: "https://cdn-icons-png.flaticon.com/512/9408/9408175.png",
-        }).then(() => window.location.replace("/"));
+        }).then(() => {
+          Swal.fire({
+            title: "Good job!",
+            text: "Register & login success!",
+            icon: "success",
+          }).then(() => window.location.replace("/"));
+        });
       })
-      .catch((err) => console.log(err));
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Something went wrong",
+          text: "มีบางอย่างผิดพลาด>",
+        });
+      });
   };
   const signInWithGoogle = async () => {
     const GoogleProvider = await new GoogleAuthProvider();
-    return signInWithPopup(auth, GoogleProvider).then(() =>
-      window.location.replace("/")
-    );
+    return signInWithPopup(auth, GoogleProvider).then(() => {
+      window.location.replace("/");
+    });
   };
   const logOut = () => {
     return signOut(auth);

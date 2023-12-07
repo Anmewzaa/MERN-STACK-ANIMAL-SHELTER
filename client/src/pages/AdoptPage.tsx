@@ -58,7 +58,7 @@ const AdoptPage = () => {
       ) : (
         <>
           <div className="mx-auto max-w-[1200px]">
-            <div className="my-4 flex gap-2 lg:mx-4 mx-4">
+            <div className="my-4 flex gap-2 mx-0">
               <input
                 type="text"
                 placeholder="Search post"
@@ -83,7 +83,7 @@ const AdoptPage = () => {
               </>
             ) : (
               <>
-                <div className="grid lg:mx-4 mx-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mb-4">
+                <div className="grid mx-0 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mb-4 ">
                   {searchFilter.map((item) => (
                     <div key={item?.postId}>
                       <Card {...item} />

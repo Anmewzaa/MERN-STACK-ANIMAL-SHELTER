@@ -7,13 +7,13 @@ const Content = () => {
         <div className="h-[650px] flex flex-col justify-around">
           <div className="grid grid-cols-2 gap-8">
             <section>
-              <h4 className="uppercase font-bold text-[#FF7F50] mb-4">
+              <h4 className="uppercase font-bold text-[#FF7F50] mb-4 tracking-wide text-sm">
                 Who we are
               </h4>
-              <h2 className="uppercase text-4xl font-bold mb-4">
+              <h2 className="uppercase text-6xl font-bold mb-4 font-amctic">
                 Help homeless animals find a forever home.
               </h2>
-              <p className="mb-4">
+              <p className="mb-8">
                 ยินดีต้อนรับสู่สถานสงเคราะห์สัตว์ของเรา
                 ที่ซึ่งความรักและความเมตตามารวมกันเพื่อสร้างสภาพแวดล้อมที่ปลอดภัยและห่วงใยสำหรับเพื่อนสี่ขาของเรา
                 ที่สถานสงเคราะห์ของเรา
@@ -25,10 +25,12 @@ const Content = () => {
                 และเราทำงานอย่างไม่เหน็ดเหนื่อยเพื่อมอบความรัก ความเอาใจใส่
                 และโอกาสครั้งที่สองแก่พวกมัน
               </p>
-              <button className="btn uppercase">Discover more</button>
+              <button className="btn uppercase rounded-full px-8">
+                Discover more
+              </button>
             </section>
             <section>
-              <img src={Cat} alt="" />
+              <img src={Cat} alt="" className="rounded-xl" />
             </section>
           </div>
         </div>
