@@ -5,15 +5,15 @@ const Content = () => {
     <div className="footprint-bg">
       <div className="mx-auto max-w-[1200px]">
         <div className="h-[650px] flex flex-col justify-around">
-          <div className="grid grid-cols-2 gap-8">
-            <section>
+          <div className="lg:grid lg:grid-cols-2 gap-8 flex flex-col">
+            <section className="xl:mx-0 mx-4 order-2">
               <h4 className="uppercase font-bold text-[#FF7F50] mb-4 tracking-wide text-sm">
                 Who we are
               </h4>
-              <h2 className="uppercase text-6xl font-bold mb-4 font-amctic">
+              <h2 className="uppercase xl:text-6xl md:text-5xl text-4xl font-bold mb-4 font-amctic">
                 Help homeless animals find a forever home.
               </h2>
-              <p className="mb-8">
+              <p className="mb-4">
                 ยินดีต้อนรับสู่สถานสงเคราะห์สัตว์ของเรา
                 ที่ซึ่งความรักและความเมตตามารวมกันเพื่อสร้างสภาพแวดล้อมที่ปลอดภัยและห่วงใยสำหรับเพื่อนสี่ขาของเรา
                 ที่สถานสงเคราะห์ของเรา
@@ -29,8 +29,12 @@ const Content = () => {
                 Discover more
               </button>
             </section>
-            <section>
-              <img src={Cat} alt="" className="rounded-xl" />
+            <section className="xl:mx-0 mx-4 order-1 flex justify-center">
+              <img
+                src={Cat}
+                alt=""
+                className="rounded-xl lg:w-[100%] w-[60%]"
+              />
             </section>
           </div>
         </div>
