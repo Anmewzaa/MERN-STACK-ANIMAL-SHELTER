@@ -8,6 +8,8 @@ import Navbar from "../components/Navbar";
 // React quill
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+// Swal
+import Swal from "sweetalert2";
 
 const Editpost = () => {
   const [name, setName] = useState("");
@@ -40,21 +42,37 @@ const Editpost = () => {
     fetchAPI();
   }, []);
   const updatePost = () => {
-    axios
-      .put(`${API_URL}/update/${id}`, {
-        animalName: name,
-        animalSpecies: species,
-        animalHabit: habit,
-        animalDesciption: description,
-      })
-      .then(() => alert("pass"))
-      .catch((err) => alert(err.error));
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Cancel`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .put(`${API_URL}/update/${id}`, {
+            animalName: name,
+            animalSpecies: species,
+            animalHabit: habit,
+            animalDesciption: description,
+          })
+          .then(() => {
+            Swal.fire({
+              title: "Update post success!",
+              text: "อัพเดทโพสต์สำเร็จ",
+              icon: "success",
+            }).then(() => {
+              window.location.replace("/adopt");
+            });
+          });
+      }
+    });
   };
   return (
     <>
       <Navbar />
       <div className="mx-auto max-w-[1200px]">
-        <form onSubmit={updatePost}>
+        <div className="xl:mx-0 mx-4">
           <div className="flex justify-center">
             <img
               src={`${IMAGE_URL}/${image}`}
@@ -62,7 +80,7 @@ const Editpost = () => {
               className="max-h-[500px] rounded-md mb-6"
             />
           </div>
-          <h1 className="mb-4 text-3xl font-semibold">Update Post</h1>
+          <h1 className="mb-4 text-3xl font-semibold ">Update Post</h1>
           <div className="mb-4">
             <label className="label">
               <span className="label-text">Name</span>
@@ -123,10 +141,10 @@ const Editpost = () => {
               className="my-2"
             />
           </div>
-          <button className="btn btn-neutral w-full mb-8" type="submit">
+          <button className="btn btn-neutral w-full mb-8" onClick={updatePost}>
             Update Post
           </button>
-        </form>
+        </div>
       </div>
     </>
   );

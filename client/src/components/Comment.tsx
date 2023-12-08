@@ -23,7 +23,7 @@ const Comment = ({ comment }) => {
         ],
       })
       .then(() => {
-        alert("Successfully");
+        window.location.reload();
       })
       .catch((err) => alert(err));
   };

@@ -13,6 +13,7 @@ import AdoptPage from "./pages/AdoptPage";
 import Adoptinfo from "./pages/AdoptInfo";
 import AddPostPage from "./pages/AddPostPage";
 import Editpost from "./pages/Editpost";
+import AboutPage from "./pages/AboutPage";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "/editpost/:id",
     element: <Editpost />,
+  },
+  {
+    path: "/about",
+    element: <AboutPage />,
   },
 ]);
 

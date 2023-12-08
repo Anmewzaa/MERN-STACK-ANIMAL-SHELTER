@@ -1,13 +1,17 @@
+// React
 import { useEffect, useState } from "react";
 // React router dom
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+// Axios
 import axios from "axios";
 // Components
 import Navbar from "../components/Navbar";
 import Comment from "../components/Comment";
 import { postType } from "../types/globalType";
+// Usecontext
 import { useUserAuth } from "../contexts/UserAuthContext";
-import { Link } from "react-router-dom";
+// Swal
+import Swal from "sweetalert2";
 
 const Adoptinfo = () => {
   const { user } = useUserAuth();
@@ -39,10 +43,25 @@ const Adoptinfo = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const deletePost = async () => {
-    await axios
-      .delete(`${API_URL}/remove/${id}/`)
-      .then(() => window.location.replace("/adopt"));
+  const deletePost = () => {
+    Swal.fire({
+      title: "Do you want to delete this post?",
+      showDenyButton: true,
+      confirmButtonText: "Delete",
+      denyButtonText: `Cancel`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`${API_URL}/remove/${id}/`).then(() => {
+          Swal.fire({
+            title: "Delete post success!",
+            text: "ลบโพสต์สำเร็จ",
+            icon: "success",
+          }).then(() => {
+            window.location.replace("/adopt");
+          });
+        });
+      }
+    });
   };
 
   return (
@@ -70,14 +89,16 @@ const Adoptinfo = () => {
                   ({post?.animalSpecies})
                 </span>
               </h1>
-              <h3 className="mb-2">{post?.animalHabit}</h3>
+              <h4 className="font-bold mb-2">Character :</h4>
+              <h3 className="mb-2 text-[#58585B]">{post?.animalHabit}</h3>
+              <h4 className="font-bold mb-2">About me :</h4>
               <div
                 dangerouslySetInnerHTML={{ __html: post?.animalDesciption }}
-                className="mb-2"
+                className="mb-2 text-[#58585B]"
               />
             </div>
             <div className="avatar">
-              <h2 className="mr-2">Author :</h2>
+              <h2 className="mr-2 font-bold">Author :</h2>
               <div className="w-6 rounded-full mr-2">
                 <img src={post?.authorProfile} className="shadow-md" />
               </div>

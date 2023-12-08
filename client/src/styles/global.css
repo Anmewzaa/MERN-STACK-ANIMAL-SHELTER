@@ -9,10 +9,10 @@
 .hero-container {
   background-image: linear-gradient(
       to bottom,
-      rgb(53, 59, 65, 0.4),
-      rgb(34, 38, 42, 0.6)
+      rgb(53, 59, 65, 0.5),
+      rgb(34, 38, 42, 0.5)
     ),
-    url("https://images.unsplash.com/photo-1597595735637-05a49627ee29?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    url("https://images.unsplash.com/photo-1525253013412-55c1a69a5738?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -40,10 +40,22 @@
 .cat-bg {
   background-image: linear-gradient(
       to bottom,
-      rgb(255, 255, 255, 0.6),
-      rgb(255, 255, 255, 0.6)
+      rgb(53, 59, 65, 0.5),
+      rgb(34, 38, 42, 0.5)
     ),
     url("https://images.unsplash.com/photo-1511044568932-338cba0ad803?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contactus-bg {
+  background-image: linear-gradient(
+      to bottom,
+      rgb(53, 59, 65, 0.5),
+      rgb(34, 38, 42, 0.5)
+    ),
+    url("https://images.unsplash.com/photo-1534361960057-19889db9621e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

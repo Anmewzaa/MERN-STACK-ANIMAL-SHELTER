@@ -57,7 +57,7 @@ const Navbar = () => {
               <li className="md:ml-8 md:my-0 my-7 font-semibold uppercase">
                 <Link
                   to={link.href}
-                  className="text-gray-800 hover:text-blue-400 duration-500"
+                  className="text-gray-800 hover:text-[#B562A8] duration-500"
                 >
                   {link.name}
                 </Link>
@@ -67,7 +67,7 @@ const Navbar = () => {
               <>
                 <Link
                   to={"/login"}
-                  className="btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static uppercase"
+                  className="btn bg-[#B562A8] hover:text-[#B562A8] hover:bg-white border hover:border-[#B562A8] text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static uppercase"
                 >
                   Sign in
                 </Link>

@@ -7,6 +7,8 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 // Components
 import Navbar from "../components/Navbar";
+// Swal
+import Swal from "sweetalert2";
 
 const AddPostPage = () => {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -39,8 +41,23 @@ const AddPostPage = () => {
 
     axios
       .post(`${API_URL}/create`, form)
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+      .then(() =>
+        Swal.fire({
+          title: "Add post success!",
+          text: "เพิ่มโพสต์สำเร็จ",
+          icon: "success",
+        }).then(() => {
+          window.location.replace("/adopt");
+        })
+      )
+      .catch((err) =>
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: err,
+        })
+      );
   };
 
   return (
@@ -81,7 +98,7 @@ const AddPostPage = () => {
           </div>
           <div className="mb-4">
             <label className="label">
-              <span className="label-text">Habit</span>
+              <span className="label-text">Character</span>
             </label>
             <div className="form-control">
               <input

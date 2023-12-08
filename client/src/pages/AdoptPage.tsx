@@ -40,7 +40,9 @@ const AdoptPage = () => {
       return post;
     }
     return (
-      post.animalId.toLowerCase().includes(search.toLowerCase()) ||
+      post.animalName.toLowerCase().includes(search.toLowerCase()) ||
+      post.animalSpecies.toLowerCase().includes(search.toLowerCase()) ||
+      post.animalHabit.toLowerCase().includes(search.toLowerCase()) ||
       post.authorName.toLowerCase().includes(search.toLowerCase()) ||
       post.authorEmail.toLowerCase().includes(search.toLowerCase())
     );
@@ -79,13 +81,13 @@ const AdoptPage = () => {
             </div>
             {searchFilter.length === 0 ? (
               <>
-                <div className="flex justify-center mt-8">Empty post...</div>
+                <div className="flex justify-center mt-8">No post found...</div>
               </>
             ) : (
               <>
-                <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mb-4 xl:mx-0 mx-4">
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8 mb-4 xl:mx-0 mx-4">
                   {searchFilter.map((item) => (
-                    <div key={item?.postId}>
+                    <div key={item?.animalId}>
                       <Card {...item} />
                     </div>
                   ))}

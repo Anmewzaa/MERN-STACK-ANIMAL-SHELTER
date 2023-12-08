@@ -37,7 +37,7 @@ const HowWeWork = () => {
             <h4 className="uppercase font-bold text-[#FF7F50] mb-4 tracking-wide text-sm">
               How we work ?
             </h4>
-            <h2 className="uppercase xl:text-6xl md:text-5xl text-4xl font-bold font-amctic">
+            <h2 className="uppercase xl:text-6xl md:text-5xl text-4xl font-bold font-amctic text-[#292929]">
               Procedure for adopting a pet
             </h2>
           </div>
@@ -53,17 +53,19 @@ const HowWeWork = () => {
                   className="mb-4 p-4 rounded-full md:w-[100%] w-[50%]"
                 />
                 <div className="text-center">
-                  <h2 className="mb-4 text-xl font-bold">
+                  <h2 className="mb-4 text-xl font-bold text-[#292929]">
                     {`${item.number}.`} {item.title}
                   </h2>
-                  <p className="xl:mx-0 mx-4">{item.description}</p>
+                  <p className="xl:mx-0 mx-4 text-[#58585B]">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className="cat-bg py-20">
+      <div className="cat-bg py-20 text-white">
         <div className="flex justify-center flex-col items-center">
           <h2 className="uppercase xl:text-6xl md:text-5xl text-4xl font-bold font-amctic mb-8 md:w-[700px] text-center md:mx-0 mx-4">
             Be inspired to bring a homeless dog, cat, or other into your home.
