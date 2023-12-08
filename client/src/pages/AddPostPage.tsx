@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase/firebase-config";
 import axios from "axios";
@@ -21,10 +21,12 @@ const AddPostPage = () => {
   const [species, setSpecies] = useState("");
   const [habit, setHabit] = useState("");
   const [description, setDescription] = useState("");
-  const onImageChange = (e) => {
+  const onImageChange = (e: {
+    target: { files: SetStateAction<never[]>[] };
+  }) => {
     setImages(e.target.files[0]);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     const form = new FormData();
@@ -64,7 +66,11 @@ const AddPostPage = () => {
     <>
       <Navbar />
       <div className="mx-auto max-w-[1200px]">
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <form
+          onSubmit={handleSubmit}
+          encType="multipart/form-data"
+          className="xl:mx-0 mx-4 my-4"
+        >
           <h1 className="mb-4 text-3xl font-semibold">Add New Post</h1>
           <div className="mb-4">
             <label className="label">

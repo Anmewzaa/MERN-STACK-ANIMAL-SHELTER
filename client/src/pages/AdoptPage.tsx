@@ -5,6 +5,7 @@ import { postType } from "../types/globalType";
 // Components
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
+import Footer from "../components/Footer";
 
 import { auth } from "../firebase/firebase-config";
 import { useNavigate } from "react-router-dom";
@@ -59,8 +60,8 @@ const AdoptPage = () => {
         </>
       ) : (
         <>
-          <div className="mx-auto max-w-[1200px]">
-            <div className="my-4 flex gap-2 xl:mx-0 mx-4">
+          <div className="mx-auto max-w-[1200px] ">
+            <div className="my-4 flex gap-2 xl:mx-0 mx-4 ">
               <input
                 type="text"
                 placeholder="Search post"
@@ -85,7 +86,7 @@ const AdoptPage = () => {
               </>
             ) : (
               <>
-                <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8 mb-4 xl:mx-0 mx-4">
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8 mb-8 xl:mx-0 mx-4 ">
                   {searchFilter.map((item) => (
                     <div key={item?.animalId}>
                       <Card {...item} />
@@ -97,6 +98,7 @@ const AdoptPage = () => {
           </div>
         </>
       )}
+      <Footer />
     </>
   );
 };

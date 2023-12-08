@@ -56,35 +56,59 @@ const AboutPage = () => {
               <img
                 src="https://media.licdn.com/dms/image/D5603AQFGQDyNkAZNUQ/profile-displayphoto-shrink_800_800/0/1691511669236?e=1707350400&v=beta&t=CCabB95T9P9JwV2vqt1l2uejBM3tM3ZCmHtqlkhhBHg"
                 alt="profile picture"
-                className="rounded-xl mb-4 lg:w-[100%] md:w-[75%] w-[50%]"
+                className="rounded-xl mb-4 lg:w-[100%] md:w-[75%] w-[50%] shadow-lg"
               />
               <h4 className="text-lg font-bold mb-2">นายปุณยกร เพชรแก้ว</h4>
+              <ul className="text-center">
+                <li>Frontend Developer</li>
+                <li>Backend Developer</li>
+                <li>Infrastructure</li>
+                <br />
+              </ul>
             </div>
             <div className="flex flex-col justify-center items-center">
               <img
                 src="https://scontent.fbkk29-4.fna.fbcdn.net/v/t1.6435-9/169827499_1455429891454595_628811604176943478_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=be3454&_nc_ohc=V_LGvxkCMJIAX_g-qEQ&_nc_ht=scontent.fbkk29-4.fna&oh=00_AfBuHBL99skxohW-VS52JN-SjzOfojtW_HrBaqHto20BIA&oe=659A2E42"
                 alt="profile picture"
-                className="rounded-xl mb-4 lg:w-[100%] md:w-[75%] w-[50%]"
+                className="rounded-xl mb-4 lg:w-[100%] md:w-[75%] w-[50%] shadow-lg"
               />
               <h4 className="text-lg font-bold mb-2">นางสาวณัฐรุจา พระพล</h4>
+              <ul className="text-center">
+                <li>Frontend Developer</li>
+                <li>UX/UI designer</li>
+                <li>Content writing</li>
+                <li>Paperwork</li>
+              </ul>
             </div>
             <div className="flex flex-col justify-center items-center">
               <img
                 src="https://scontent.fbkk29-4.fna.fbcdn.net/v/t39.30808-6/318100076_1508069669676170_6251487764969729093_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=VK4N4ZiHm7cAX-icGRB&_nc_ht=scontent.fbkk29-4.fna&oh=00_AfC8ZnZlwHCk31UUyP6FOvBC2sgJQc3IahKJ0LXdA5PT7w&oe=6578A2CF"
                 alt="profile picture"
-                className="rounded-xl mb-4 lg:w-[100%] md:w-[75%] w-[50%]"
+                className="rounded-xl mb-4 lg:w-[100%] md:w-[75%] w-[50%] shadow-lg"
               />
               <h4 className="text-lg font-bold mb-2">นายสิรวิชญ์ แสงกล้าหาญ</h4>
+              <ul className="text-center">
+                <li>Backend Developer</li>
+                <li>UX/UI designer</li>
+                <li>Content writing</li>
+                <li>Paperwork</li>
+              </ul>
             </div>
             <div className="flex flex-col justify-center items-center">
               <img
                 src="https://scontent.fbkk29-7.fna.fbcdn.net/v/t1.6435-1/30595299_1960071657640563_1164376298349395968_n.jpg?stp=dst-jpg_s320x320&_nc_cat=108&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=G9mToafdVo8AX_HPZ_y&_nc_ht=scontent.fbkk29-7.fna&oh=00_AfALOSWt-J-N3x6iTopOGZgUKFtsSbsrrrtSsijrDhszMA&oe=659A2F64"
                 alt="profile picture"
-                className="rounded-xl mb-4 lg:w-[100%] md:w-[75%] w-[50%]"
+                className="rounded-xl mb-4 lg:w-[100%] md:w-[75%] w-[50%] shadow-lg"
               />
               <h4 className="text-lg font-bold mb-2">
                 นายบุริศร์ สมเกียรติกุล
               </h4>
+              <ul className="text-center">
+                <li>UX/UI designer</li>
+                <li>Paperwork</li>
+                <br />
+                <br />
+              </ul>
             </div>
           </div>
         </div>

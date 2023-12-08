@@ -34,7 +34,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="shadow-sm w-full">
+      <div className="shadow-sm w-full ">
         <div className="md:flex items-center justify-between bg-white py-4 md:py-2 md:px-12 px-7 relative">
           <div className="font-bold text-3xl cursor-pointer flex items-center gap-1">
             <Link to={"/"} className="font-amctic">
@@ -73,7 +73,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <div className="dropdown dropdown-end md:ml-8">
+                <div className="dropdown dropdown-end md:ml-8 md:inline hidden">
                   <label tabIndex={0} className="btn">
                     {user.displayName}
                   </label>
@@ -87,6 +87,14 @@ const Navbar = () => {
                       </button>
                     </li>
                   </ul>
+                </div>
+                <div className="inline md:hidden">
+                  <button
+                    onClick={handleSignout}
+                    className="uppercase text-gray-800 hover:text-[#B562A8] duration-500 font-bold"
+                  >
+                    Sign out
+                  </button>
                 </div>
               </>
             )}
