@@ -1,4 +1,3 @@
-import ReactQuill from "react-quill";
 import { postType } from "../types/globalType";
 import { useNavigate } from "react-router-dom";
 

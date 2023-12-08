@@ -10,7 +10,6 @@ import Card from "./Card";
 const AdoptShow = () => {
   const [posts, setPosts] = useState<postType[]>([]);
   const API_URL = import.meta.env.VITE_API_URL;
-  const IMAGE_URL = import.meta.env.VITE_IMAGE_URL;
 
   const fetchAPI = async () => {
     await axios
@@ -24,6 +23,7 @@ const AdoptShow = () => {
   };
   useEffect(() => {
     fetchAPI();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

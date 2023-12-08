@@ -14,7 +14,7 @@ import Swal from "sweetalert2";
 const userAuthContext = createContext([[], () => null]);
 
 export const UserAuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState<any | null>({});
+  const [user, setUser] = useState<unknown | null>({});
   const signIn = (email: string, password: string) => {
     return signInWithEmailAndPassword(auth, email, password)
       .then(() => {
@@ -88,6 +88,7 @@ export const UserAuthContextProvider = ({ children }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useUserAuth = () => {
   return useContext(userAuthContext);
 };

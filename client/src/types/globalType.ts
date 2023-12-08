@@ -26,3 +26,10 @@ export interface stepType {
   title: string;
   description: string;
 }
+
+export interface commentType {
+  authorUid: string;
+  authorName: string;
+  authorProfile: string;
+  Text: string;
+}
