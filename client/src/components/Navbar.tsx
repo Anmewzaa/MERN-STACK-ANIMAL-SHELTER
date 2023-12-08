@@ -2,9 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../contexts/UserAuthContext";
 import { useState } from "react";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import { navType } from "../types/globalType";
 
-const navItem: navType[] = [
+const navItem = [
   {
     name: "Home",
     href: "/",

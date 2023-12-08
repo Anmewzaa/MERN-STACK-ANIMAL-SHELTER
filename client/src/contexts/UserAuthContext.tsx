@@ -11,11 +11,11 @@ import {
 import { auth } from "../firebase/firebase-config";
 import Swal from "sweetalert2";
 
-const userAuthContext = createContext([[], () => null]);
+const userAuthContext = createContext(null);
 
 export const UserAuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState({});
-  const signIn = (email, password) => {
+  const [user, setUser] = useState<unknown | null>({});
+  const signIn = (email: string, password: string) => {
     return signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         Swal.fire({
@@ -32,7 +32,7 @@ export const UserAuthContextProvider = ({ children }) => {
         });
       });
   };
-  const signUp = (username, email, password) => {
+  const signUp = (username: string, email: string, password: string) => {
     return createUserWithEmailAndPassword(auth, email, password)
       .then((user) => {
         updateProfile(user.user, {

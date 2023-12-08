@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useUserAuth } from "../contexts/UserAuthContext";
+import { useUserAuth } from "../contexts/UserAuthContext.js";
 import Swal from "sweetalert2";
-import toast from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
