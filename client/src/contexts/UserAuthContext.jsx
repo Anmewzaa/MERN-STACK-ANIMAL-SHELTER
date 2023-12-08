@@ -14,8 +14,8 @@ import Swal from "sweetalert2";
 const userAuthContext = createContext([[], () => null]);
 
 export const UserAuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState<unknown | null>({});
-  const signIn = (email: string, password: string) => {
+  const [user, setUser] = useState({});
+  const signIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         Swal.fire({
@@ -32,7 +32,7 @@ export const UserAuthContextProvider = ({ children }) => {
         });
       });
   };
-  const signUp = (username: string, email: string, password: string) => {
+  const signUp = (username, email, password) => {
     return createUserWithEmailAndPassword(auth, email, password)
       .then((user) => {
         updateProfile(user.user, {

@@ -4,9 +4,7 @@ import axios from "axios";
 // React router dom
 import { useParams } from "react-router-dom";
 
-import { commentType } from "../types/globalType";
-
-const Comment = ({ comment }: commentType) => {
+const Comment = ({ comment }) => {
   const { id } = useParams();
   const API_URL = import.meta.env.VITE_API_URL;
   const { user } = useUserAuth();
@@ -32,7 +30,6 @@ const Comment = ({ comment }: commentType) => {
 
   return (
     <div>
-      {JSON.stringify(comment)}
       {user ? (
         <>
           {comment &&
